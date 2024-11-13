@@ -28,7 +28,7 @@ export default function TopMenuCamp({
             />
             <TopMenuItem
               title="อ่านแชตทั้งหมด"
-              pageRef={`/camp/${campId}/baan/nongChat`}
+              pageRef={`/camp/${campId}/allChat`}
             />
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function TopMenuCamp({
                 />
                 <TopMenuItem
                   title="อ่านแชตทั้งหมด"
-                  pageRef={`/camp/${campId}/baan/nongChat`}
+                  pageRef={`/camp/${campId}/allChat`}
                 />
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function TopMenuCamp({
                 />
                 <TopMenuItem
                   title="อ่านแชตทั้งหมด"
-                  pageRef={`/camp/${campId}/baan/nongChat`}
+                  pageRef={`/camp/${campId}/allChat`}
                 />
               </div>
             </div>
