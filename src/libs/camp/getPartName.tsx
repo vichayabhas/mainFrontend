@@ -1,6 +1,5 @@
 import { getBackendUrl } from "@/components/setup";
 import { Id, InterPartNameContainer } from "../../../interface";
-import mongoose from "mongoose";
 
 export default async function getPartName(
   id: Id,

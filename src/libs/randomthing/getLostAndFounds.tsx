@@ -1,5 +1,5 @@
 import { getBackendUrl } from "@/components/setup";
-import { InterLostAndFound, ShowLostAndFound } from "../../../interface";
+import { ShowLostAndFound } from "../../../interface";
 
 export default async function getLostAndFounds(
   token: string

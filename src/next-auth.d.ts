@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth'
+//import NextAuth from 'next-auth'
 import { InterUser } from '../interface'
 
 declare module "next-auth" {

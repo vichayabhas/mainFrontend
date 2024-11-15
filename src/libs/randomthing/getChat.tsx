@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { ChatReady, GetChat, Id } from "../../../interface";
 import { getBackendUrl } from "@/components/setup";
 

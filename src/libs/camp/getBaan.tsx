@@ -1,6 +1,5 @@
 import { getBackendUrl } from "@/components/setup";
-import { Id, InterBaanFront, InterCampFront } from "../../../interface";
-import mongoose from "mongoose";
+import { Id, InterBaanFront } from "../../../interface";
 
 export default async function getBaan(
   id: Id

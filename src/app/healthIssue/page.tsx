@@ -5,14 +5,14 @@ import BackToHome from "@/components/BackToHome";
 import { HeathIssueBody } from "../../../interface";
 import getHeathIssue from "@/libs/user/getHeathIssue";
 import HeathIssueClient from "@/components/HeathIssueClient";
-
+import React from "react";
 export default async function name() {
   const session = await getServerSession(authOptions);
   if (!session) {
     return <BackToHome />;
   }
   const user = await getUserProfile(session.user.token);
-  var heathIssue: HeathIssueBody;
+  let heathIssue: HeathIssueBody;
   if (user.healthIssueId) {
     heathIssue = await getHeathIssue(user.healthIssueId);
   } else {

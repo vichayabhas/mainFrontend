@@ -4,6 +4,7 @@ import {
   InterUser,
 } from "../../interface";
 import AllInOneLock from "./AllInOneLock";
+import React from "react";
 
 export default function ShowOwnCampData({
   token,

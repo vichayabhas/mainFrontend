@@ -1,5 +1,4 @@
 import { getBackendUrl } from "@/components/setup";
-import mongoose from "mongoose";
 import { Id, ShowMember } from "../../../interface";
 
 export default async function getUserFromCamp(

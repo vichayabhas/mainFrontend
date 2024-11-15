@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import FinishButton from "./FinishButton";
-import userLogin from "@/libs/user/userLogIn";
-import bcrypt from "bcrypt";
 import checkPassword from "@/libs/user/checkPassword";
 export default function PasswordLock({
   children,

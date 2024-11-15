@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import {
   AllPlaceData,
-  InterBuilding,
   InterCampFront,
   InterPartFront,
   InterPlace,
@@ -12,8 +11,7 @@ import {
   MyMap,
   ShowMember,
 } from "../../interface";
-import { Dispatch, SetStateAction, useState } from "react";
-import mongoose from "mongoose";
+import { useState } from "react";
 import PlaceSelect from "./PlaceSelect";
 import FinishButton from "./FinishButton";
 import { LocalizationProvider, DateTimePicker } from "@mui/x-date-pickers";
@@ -30,6 +28,7 @@ import {
 } from "./setup";
 import createWorkingItem from "@/libs/camp/createWorkingItem";
 import plusActionPlan from "@/libs/camp/plusActionPlan";
+import React from "react";
 export default function PartClient({
   user,
   part,
@@ -62,7 +61,7 @@ export default function PartClient({
   const [plus, setPlus] = useState<number>(0);
   const router = useRouter();
   const maps: MyMap[] = [];
-  var i = 0;
+  let i = 0;
   while (i < pees.length) {
     const { _id, nickname, name, lastname } = pees[i++];
     maps.push({ key: _id, value: `${nickname} ${name} ${lastname}` });
@@ -113,8 +112,8 @@ export default function PartClient({
             <th>กรุปของนิสิต</th>
             <th>ปัญหาสุขภาพ</th>
           </tr>
-          {pees.map((user: ShowMember) => (
-            <tr style={{ border: "solid", borderColor: "#373737" }}>
+          {pees.map((user: ShowMember,i) => (
+            <tr style={{ border: "solid", borderColor: "#373737" }} key={i}>
               <td>{user.nickname}</td>
               <td>{user.name}</td>
               <td>{user.lastname}</td>
@@ -171,8 +170,8 @@ export default function PartClient({
             <th>กรุปของนิสิต</th>
             <th>ปัญหาสุขภาพ</th>
           </tr>
-          {petos.map((user: ShowMember) => (
-            <tr style={{ border: "solid", borderColor: "#373737" }}>
+          {petos.map((user: ShowMember,i) => (
+            <tr style={{ border: "solid", borderColor: "#373737" }} key={i}>
               <td>{user.nickname}</td>
               <td>{user.name}</td>
               <td>{user.lastname}</td>
@@ -287,12 +286,12 @@ export default function PartClient({
           }}
         />
         {places.map((v, i) => (
-          <PlaceSelect
+          <PlaceSelect key={i}
             place={v}
             onClick={(outPut) => {
               setPlaces(
                 places.map(
-                  modifyElementInUseStateArray<InterPlace | null>(outPut, i)
+                  modifyElementInUseStateArray(outPut, i)
                 )
               );
             }}

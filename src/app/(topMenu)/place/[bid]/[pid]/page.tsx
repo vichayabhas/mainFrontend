@@ -2,11 +2,9 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import BackToHome from "@/components/BackToHome";
 import { stringToId } from "@/components/setup";
 import getPlace from "@/libs/randomthing/getPlace";
-import getPlaces from "@/libs/randomthing/getPlaces";
 import getUserProfile from "@/libs/user/getUserProfile";
-import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
-
+import React from "react";
 export default async function PlacePage({
   params,
 }: {

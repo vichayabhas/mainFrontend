@@ -1,23 +1,15 @@
 "use client";
 import { Select, MenuItem } from "@mui/material";
-import { useRef, useState } from "react";
-
+import React from "react";
+import { Size } from "../../interface";
 export default function SelectSize({
   select,
   def,
 }: {
-  select: Function;
-  def: "S" | "M" | "L" | "XL" | "XXL" | "3XL" | null;
+  select: (size: Size) => void;
+  def: Size | null;
 }) {
-  const userRef = useRef("");
-  const choices: ("S" | "M" | "L" | "XL" | "XXL" | "3XL")[] = [
-    "S",
-    "M",
-    "L",
-    "XL",
-    "XXL",
-    "3XL",
-  ];
+  const choices: Size[] = ["S", "M", "L", "XL", "XXL", "3XL"];
 
   //const [chose, setChose] = useState<'S' | 'M' | 'L' | 'XL' | 'XXL' | '3XL' | null>(null);
   return (
@@ -32,9 +24,9 @@ export default function SelectSize({
           color: "white",
         }}
       >
-        {choices.map((choice: "S" | "M" | "L" | "XL" | "XXL" | "3XL") => {
+        {choices.map((choice: Size, i) => {
           return (
-            <MenuItem value={choice} onClick={() => select(choice)}>
+            <MenuItem value={choice} onClick={() => select(choice)} key={i}>
               {choice}
             </MenuItem>
           );

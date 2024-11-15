@@ -5,7 +5,7 @@ import { getAllPlaceData } from "@/components/placeSetUp";
 import getAllUserCamp from "@/libs/camp/getAllUserCamp";
 import getLostAndFounds from "@/libs/randomthing/getLostAndFounds";
 import { getServerSession } from "next-auth";
-
+import React from "react";
 export default async function page() {
   const session = await getServerSession(authOptions);
   if (!session) {
@@ -29,8 +29,8 @@ export default async function page() {
           <th>ห้อง</th>
           <th>ค่าย</th>
         </tr>
-        {lostAndFounds.map((lostAndFound) => (
-          <tr>
+        {lostAndFounds.map((lostAndFound,i) => (
+          <tr key={i}>
             <td>{lostAndFound._id.toString()}</td>
             <td>{lostAndFound.name}</td>
             <td>{lostAndFound.detail}</td>

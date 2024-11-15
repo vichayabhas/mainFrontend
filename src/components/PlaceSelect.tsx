@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { AllPlaceData, Id, InterBuilding, InterPlace } from "../../interface";
-import mongoose from "mongoose";
-import { useSession } from "next-auth/react";
+import { AllPlaceData, Id, InterPlace } from "../../interface";
 import { MenuItem, Select } from "@mui/material";
-import BackToHome from "./BackToHome";
+import React from "react";
 export default function PlaceSelect({
   place,
   onClick,
@@ -14,14 +12,13 @@ export default function PlaceSelect({
   allPlaceData, //const allPlaceData=await getAllPlaceData()
 }: {
   place: InterPlace | null;
-  onClick: (outPut: InterPlace) => void;
+  onClick: (outPut: InterPlace|null) => void;
   buildingText: string;
   placeText: string;
   allPlaceData: AllPlaceData; //const allPlaceData=await getAllPlaceData()
 }) {
   // dispatch = useDispatch<AppDispatch>();
   //const update = useAppSelector((state) => state.bookSlice.bookItem);
-  const { data: session } = useSession();
 
   const [nP, setNP] = useState<InterPlace | null>(place);
 
@@ -35,9 +32,6 @@ export default function PlaceSelect({
   allPlaceData.allPlace.forEach((e, input: string) => {
     buildings.push(input);
   });
-  if (!session) {
-    return <BackToHome />;
-  }
   return (
     <>
       <div className="flex flex-row items-center my-5">
@@ -52,9 +46,9 @@ export default function PlaceSelect({
           }}
           defaultValue={nB}
         >
-          {buildings.map((choice: string) => {
+          {buildings.map((choice: string,i) => {
             return (
-              <MenuItem value={choice} onClick={() => setNB(choice)}>
+              <MenuItem value={choice} onClick={() => setNB(choice)} key={i}>
                 {choice}
               </MenuItem>
             );
@@ -73,9 +67,9 @@ export default function PlaceSelect({
           }}
           defaultValue={`${nP?.floor} ${nP?.room}`}
         >
-          {nC?.map((choice: InterPlace) => {
+          {nC?.map((choice: InterPlace,i) => {
             return (
-              <MenuItem
+              <MenuItem key={i}
                 value={`${choice.floor} ${choice.room}`}
                 onClick={() => {
                   onClick(choice);
@@ -86,6 +80,15 @@ export default function PlaceSelect({
               </MenuItem>
             );
           })}
+          <MenuItem
+                value={'-'}
+                onClick={() => {
+                  onClick(null);
+                  setNP(null);
+                }}
+              >
+                -
+              </MenuItem>
         </Select>
       </div>
     </>

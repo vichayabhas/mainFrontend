@@ -5,7 +5,7 @@ import { stringToId } from "@/components/setup";
 import getChat from "@/libs/randomthing/getChat";
 import getCampMemberCardByCampId from "@/libs/user/getCampMemberCardByCampId";
 import { getServerSession } from "next-auth";
-
+import React from "react";
 export default async function AllChat({
   params,
 }: {

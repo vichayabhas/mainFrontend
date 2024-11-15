@@ -1,6 +1,5 @@
 import { getBackendUrl } from "@/components/setup";
 import { Id, InterPeeCamp } from "../../../interface";
-import mongoose from "mongoose";
 
 export default async function getPeeCamp(
   id: Id,

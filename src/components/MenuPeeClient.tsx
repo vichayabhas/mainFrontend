@@ -3,8 +3,7 @@
 import { useRouter } from "next/navigation";
 import { InterUser } from "../../interface";
 import FinishButton from "./FinishButton";
-import TopMenuItem from "./TopMenuItem";
-
+import React from "react";
 export default function MenuPeeClient({ user }: { user: InterUser }) {
   const router = useRouter();
   return (

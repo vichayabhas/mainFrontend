@@ -6,7 +6,7 @@ import { InterPartFront } from "../../../../interface";
 import getPart from "@/libs/camp/getPart";
 import AuthPartClient from "@/components/AuthPartClient";
 import PasswordLock from "@/components/PasswordLock";
-
+import React from "react";
 export default async function page() {
   const session = await getServerSession(authOptions);
   if (!session) {
@@ -17,7 +17,7 @@ export default async function page() {
     return <BackToHome />;
   }
   const parts: InterPartFront[] = [];
-  var i = 0;
+  let i = 0;
   while (i < user.authPartIds.length) {
     const part = await getPart(user.authPartIds[i++]);
     parts.push(part);

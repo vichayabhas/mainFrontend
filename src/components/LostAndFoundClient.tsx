@@ -1,19 +1,12 @@
 "use client";
 
-import mongoose from "mongoose";
-import {
-  AllPlaceData,
-  Id,
-  InterBuilding,
-  InterPlace,
-  MyMap,
-} from "../../interface";
+import { AllPlaceData, Id, MyMap } from "../../interface";
 import { useRef, useState } from "react";
 import { MenuItem, Select, TextField } from "@mui/material";
 import PlaceSelect from "./PlaceSelect";
-import SelectTemplate from "./SelectTemplate";
 import addLostAndFound from "@/libs/randomthing/addLostAndFound";
-
+import { getId } from "./setup";
+import React from "react";
 export default function LostAndFoundClient({
   mapIn,
   token,
@@ -127,7 +120,7 @@ export default function LostAndFoundClient({
         <PlaceSelect
           place={null}
           onClick={(place) => {
-            setPlaceId(place._id);
+            setPlaceId(getId(place));
           }}
           buildingText={"ตึกที่พบเจอหรือคิดว่าทำหายถ้ารู้"}
           placeText={"ชั้นและห้องที่พบเจอหรือคิดว่าทำหายถ้ารู้"}
@@ -143,9 +136,10 @@ export default function LostAndFoundClient({
               color: "white",
             }}
           >
-            {mapIn.map((choice: MyMap) => {
+            {mapIn.map((choice: MyMap, i) => {
               return (
                 <MenuItem
+                  key={i}
                   value={choice.value}
                   onClick={() => {
                     setChose(choice.key);
@@ -163,19 +157,18 @@ export default function LostAndFoundClient({
             }}
             onClick={async () => {
               console.log(userRef);
-              try {
-                if (type && detail && name)
-                  addLostAndFound(
-                    {
-                      type,
-                      campId: chose,
-                      name,
-                      detail,
-                      placeId,
-                    },
-                    token
-                  );
-              } catch (error) {}
+
+              if (type && detail && name)
+                addLostAndFound(
+                  {
+                    type,
+                    campId: chose,
+                    name,
+                    detail,
+                    placeId,
+                  },
+                  token
+                );
             }}
           >
             ประกาศ lost & found

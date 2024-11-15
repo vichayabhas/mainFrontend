@@ -5,7 +5,7 @@ import TopMenu from "@/components/TopMenu";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import NextAuthProvider from "./providers/NextAuthProvider";
-
+import React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

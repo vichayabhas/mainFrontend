@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { useState } from "react";
 import { FoodLimit, foodLimits, HeathIssueBody } from "../../interface";
 import { Checkbox, MenuItem, Select, TextField } from "@mui/material";
@@ -161,9 +161,9 @@ export default function HeathIssueClient({
             color: "white",
           }}
         >
-          {foodLimits.map((value) => {
+          {foodLimits.map((value,i) => {
             return (
-              <MenuItem
+              <MenuItem key={i}
                 onClick={() => {
                   set8(value);
                 }}

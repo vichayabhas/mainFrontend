@@ -1,9 +1,7 @@
 "use client";
 import { Select, MenuItem } from "@mui/material";
-import mongoose from "mongoose";
 import { useRef, useState } from "react";
-import { MyMap } from "../../interface";
-
+import React from "react";
 export default function SelectTemplate<T>({
   mapIn,
   select,
@@ -24,9 +22,9 @@ export default function SelectTemplate<T>({
         id="location"
         className="h-[2em] w-[200px]"
       >
-        {mapIn.map((choice: {key:T,value:string}) => {
+        {mapIn.map((choice: {key:T,value:string},i) => {
           return (
-            <MenuItem
+            <MenuItem key={i}
               value={choice.value}
               onClick={() => {
                 setChose(choice.key);

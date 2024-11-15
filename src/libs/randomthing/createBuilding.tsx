@@ -11,4 +11,5 @@ export default async function createBuilding(name: string, token: string) {
       },
     }
   );
+  return await response.json()
 }

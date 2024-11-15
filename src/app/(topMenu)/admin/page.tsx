@@ -5,11 +5,9 @@ import BackToHome from "@/components/BackToHome";
 import getCamps from "@/libs/camp/getCamps";
 import HospitalCatalog from "@/components/HospitalCatalog";
 import { LinearProgress } from "@mui/material";
-
+import React from "react";
 import { Suspense } from "react";
-import getCampName from "@/libs/camp/getCampName";
 import getCampNames from "@/libs/admin/getCampNames";
-
 import AdminClient from "@/components/AdminClient";
 import getPartNames from "@/libs/admin/getPartNames";
 import PasswordLock from "@/components/PasswordLock";

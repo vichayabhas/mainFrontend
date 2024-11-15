@@ -11,5 +11,7 @@ export async function updateBottle(haveBottle: boolean, token: string) {
       },
       cache:'no-store'
     });
+    return await response.json()
   }
+  
 }

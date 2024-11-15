@@ -11,4 +11,5 @@ export default async function addCampName(name: string, token: string) {
       },
     }
   );
+  return await res.json()
 }

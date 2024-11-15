@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-import { Id, InterActionPlan, showActionPlan } from "../../../interface";
+import { Id, showActionPlan } from "../../../interface";
 import { getBackendUrl } from "@/components/setup";
 
 export default async function getActionPlanByPartId(

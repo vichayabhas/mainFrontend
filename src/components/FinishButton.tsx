@@ -1,9 +1,10 @@
+import React from "react";
 export default function FinishButton({
   text,
   onClick,
 }: {
   text: string;
-  onClick: Function;
+  onClick: () => void;
 }) {
   return (
     <button
@@ -11,7 +12,7 @@ export default function FinishButton({
       style={{
         color: "#961A1D",
       }}
-      onClick={() => onClick()}
+      onClick={onClick}
     >
       {text}
     </button>

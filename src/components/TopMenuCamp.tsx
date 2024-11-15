@@ -1,9 +1,8 @@
 "use client";
 import styles from "./topmenu.module.css";
 import TopMenuItem from "./TopMenuItem";
-import mongoose from "mongoose";
 import { Id, Mode, RoleCamp } from "../../interface";
-
+import React from "react";
 export default function TopMenuCamp({
   campId,
   role,
@@ -58,7 +57,7 @@ export default function TopMenuCamp({
               </div>
             </div>
           );
-        case "pee":
+        case "pee": {
           return (
             <div className={styles.menucontainerCamp}>
               <div className="flex flex-row absolute right-10 top-0 h-full py-2 text-center">
@@ -89,7 +88,9 @@ export default function TopMenuCamp({
               </div>
             </div>
           );
+        }
       }
+      break
     }
     case "peto": {
       switch (mode) {
@@ -108,7 +109,7 @@ export default function TopMenuCamp({
               </div>
             </div>
           );
-        case "pee":
+        case "pee": {
           return (
             <div className={styles.menucontainerCamp}>
               <div className="flex flex-row absolute right-10 top-0 h-full py-2 text-center">
@@ -127,6 +128,7 @@ export default function TopMenuCamp({
               </div>
             </div>
           );
+        }
       }
     }
   }

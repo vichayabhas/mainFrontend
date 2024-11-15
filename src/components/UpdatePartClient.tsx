@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { useState } from "react";
 import { AllPlaceData, Id, InterPlace } from "../../interface";
 import { useSession } from "next-auth/react";
@@ -50,9 +50,9 @@ export default function UpdatePartClient({
             className="h-[2em] w-[200px]"
             defaultValue={nB}
           >
-            {buildings.map((choice: string) => {
+            {buildings.map((choice: string,i) => {
               return (
-                <MenuItem value={choice} onClick={() => setNB(choice)}>
+                <MenuItem value={choice} onClick={() => setNB(choice)} key={i}>
                   {choice}
                 </MenuItem>
               );
@@ -70,9 +70,9 @@ export default function UpdatePartClient({
             className="h-[2em] w-[200px]"
             defaultValue={nP}
           >
-            {nC?.map((choice: InterPlace) => {
+            {nC?.map((choice: InterPlace,i) => {
               return (
-                <MenuItem
+                <MenuItem key={i}
                   value={`${choice.floor} ${choice.room}`}
                   onClick={() => setNP(choice)}
                 >

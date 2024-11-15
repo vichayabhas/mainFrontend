@@ -1,13 +1,11 @@
 "use client";
 import SelectSize from "@/components/SelectSize";
-import { getBackendUrl } from "@/components/setup";
 import userSignup from "@/libs/user/userSignup";
 import { Checkbox, Input, TextField } from "@mui/material";
 import Link from "next/link";
-import { useRef, useState } from "react";
-
+import { useState } from "react";
+import React from "react";
 export default function signupPage() {
-  const userRef = useRef("");
   const [name, setName] = useState<string>("");
   const [tel, setTel] = useState<string>("");
   const [email, setEmail] = useState<string>("");

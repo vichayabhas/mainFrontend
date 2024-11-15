@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CampWelfarePack } from "../../interface";
 import { MenuItem, Select } from "@mui/material";
 import CampNumberTable from "./CampNumberTable";
-
+import React from "react";
 export default function WelfareClient({
   welfare,
 }: {
@@ -23,8 +23,8 @@ export default function WelfareClient({
   return (
     <>
       <Select value={welfareMode}>
-        {welfareModes.map((e) => (
-          <MenuItem
+        {welfareModes.map((e,i) => (
+          <MenuItem key={i}
             onClick={() => {
               setWelfareMode(e);
             }}
@@ -90,8 +90,8 @@ export default function WelfareClient({
             </>
           ) : null}
         </tr>
-        {welfare.baanWelfares.map((data) => (
-          <tr>
+        {welfare.baanWelfares.map((data,i) => (
+          <tr key={i}>
             <td>{data.name}</td>
             <td>{data.nongSize.sizeS}</td>
             <td>{data.nongSize.sizeM}</td>
@@ -117,8 +117,8 @@ export default function WelfareClient({
             ) : null}
           </tr>
         ))}
-        {welfare.partWelfares.map((data) => (
-          <tr>
+        {welfare.partWelfares.map((data,i) => (
+          <tr key={i}>
             <td>{data.name}</td>
             <td>{data.nongSize.sizeS}</td>
             <td>{data.nongSize.sizeM}</td>
@@ -162,8 +162,8 @@ export default function WelfareClient({
 
           {welfare.baanWelfares.map((baan) => (
             <>
-              {baan.nongHealths.map((nong) => (
-                <tr>
+              {baan.nongHealths.map((nong,i) => (
+                <tr key={i}>
                   <td>{nong.user.nickname}</td>
                   <td>{nong.user.name}</td>
                   <td>{nong.user.lastname}</td>
@@ -177,8 +177,8 @@ export default function WelfareClient({
                   ) : null}
                 </tr>
               ))}
-              {baan.peeHealths.map((pee) => (
-                <tr>
+              {baan.peeHealths.map((pee,i) => (
+                <tr key={i}>
                   <td>{pee.user.nickname}</td>
                   <td>{pee.user.name}</td>
                   <td>{pee.user.lastname}</td>
@@ -198,8 +198,8 @@ export default function WelfareClient({
             ? welfare.partWelfares.map((part) => (
                 <>
                   {welfare.isHavePeto
-                    ? part.petoHealths.map((peto) => (
-                        <tr>
+                    ? part.petoHealths.map((peto,i) => (
+                        <tr key={i}>
                           <td>{peto.user.nickname}</td>
                           <td>{peto.user.name}</td>
                           <td>{peto.user.lastname}</td>
@@ -217,8 +217,8 @@ export default function WelfareClient({
                       ))
                     : null}
                   {welfareMode != "ซ่อนปัญหาสุขภาพพี่บ้านในฝ่าย"
-                    ? part.peeHealths.map((pee) => (
-                        <tr>
+                    ? part.peeHealths.map((pee,i) => (
+                        <tr key={i}>
                           <td>{pee.user.nickname}</td>
                           <td>{pee.user.name}</td>
                           <td>{pee.user.lastname}</td>

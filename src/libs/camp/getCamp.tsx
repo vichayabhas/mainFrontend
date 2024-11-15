@@ -1,6 +1,5 @@
 import { getBackendUrl } from "@/components/setup";
 import { Id, InterCampFront } from "../../../interface";
-import mongoose from "mongoose";
 
 export default async function getCamp(
   id: Id

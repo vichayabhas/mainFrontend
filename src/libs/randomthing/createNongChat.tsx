@@ -14,4 +14,5 @@ export default async function createNongChat(
     },
     body: JSON.stringify(input),
   });
+  return await res.json()
 }

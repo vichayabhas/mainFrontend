@@ -8,6 +8,7 @@ import {
 import { useRouter } from "next/navigation";
 import FinishButton from "./FinishButton";
 import { downToShowNong, generateExcelData } from "./setup";
+import React from "react";
 
 export default function BaanMembers({
   baan,
@@ -86,9 +87,9 @@ export default function BaanMembers({
               </>
             ) : null}
           </tr>
-          {nongs.map((user: ShowMember) => {
+          {nongs.map((user: ShowMember,i) => {
             return (
-              <tr style={{ border: "solid", borderColor: "white" }}>
+              <tr style={{ border: "solid", borderColor: "white" }} key={i}>
                 <td>{user.nickname}</td>
                 <td>{user.name}</td>
                 <td>{user.lastname}</td>
@@ -176,8 +177,8 @@ export default function BaanMembers({
               </>
             ) : null}
           </tr>
-          {pees.map((user: ShowMember) => (
-            <tr style={{ border: "solid", borderColor: "white" }}>
+          {pees.map((user: ShowMember,i) => (
+            <tr style={{ border: "solid", borderColor: "white" }} key={i}>
               <td>{user.nickname}</td>
               <td>{user.name}</td>
               <td>{user.lastname}</td>

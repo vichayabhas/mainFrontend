@@ -1,5 +1,4 @@
 import { getBackendUrl } from "@/components/setup";
-import mongoose from "mongoose";
 import { CampWelfarePack, Id } from "../../../interface";
 
 export default async function getAllWelfare(

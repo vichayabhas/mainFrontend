@@ -1,5 +1,4 @@
 import { getBackendUrl } from "@/components/setup";
-import mongoose from "mongoose";
 import { Id } from "../../../interface";
 
 export default async function changePart(
@@ -18,4 +17,5 @@ export default async function changePart(
     cache: "no-store",
     body: JSON.stringify(input),
   });
+  return await res.json()
 }

@@ -1,5 +1,5 @@
 import { CampNumberData } from "../../interface";
-
+import React from "react";
 export default function CampNumberTable({
   groupName,
   isHavePeto,
@@ -27,8 +27,8 @@ export default function CampNumberTable({
         <td>{main.peeNumber}</td>
         {isHavePeto ? <td>{main.petoNumber}</td> : null}
       </tr>
-      {baanNumbers.map((baan) => (
-        <tr>
+      {baanNumbers.map((baan,i) => (
+        <tr key={i}>
           <td>
             {groupName}
             {baan.name}
@@ -38,8 +38,8 @@ export default function CampNumberTable({
           {isHavePeto ? <td>{baan.petoNumber}</td> : null}
         </tr>
       ))}
-      {partNumbers.map((part) => (
-        <tr>
+      {partNumbers.map((part,i) => (
+        <tr key={i}>
           <td>ฝ่าย{part.name}</td>
           <td>{part.nongNumber}</td>
           <td>{part.peeNumber}</td>

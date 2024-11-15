@@ -3,12 +3,11 @@ import BackToHome from "@/components/BackToHome";
 import WorkingItemClient from "@/components/WorkingItemClient";
 import getWorkingItemByPartId from "@/libs/camp/getWorkingItemByPartId";
 import getUserProfile from "@/libs/user/getUserProfile";
-import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 import bcrypt from "bcrypt";
 import PasswordLock from "@/components/PasswordLock";
 import { stringToId } from "@/components/setup";
-
+import React from "react";
 export default async function HospitalDetailPage({
   params,
 }: {
@@ -22,7 +21,7 @@ export default async function HospitalDetailPage({
   if (user.role === "nong") {
     return <BackToHome />;
   }
-  var i = 0;
+  let i = 0;
   const workingItems = await getWorkingItemByPartId(
     stringToId(params.pid),
     session.user.token

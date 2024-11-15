@@ -1,5 +1,4 @@
 import { getBackendUrl, userPath } from "@/components/setup";
-import mongoose from "mongoose";
 import { Id, InterHeathIssue } from "../../../interface";
 
 export default async function getHeathIssue(

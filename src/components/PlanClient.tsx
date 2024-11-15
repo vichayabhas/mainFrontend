@@ -11,8 +11,9 @@ import AllInOneLock from "./AllInOneLock";
 import PlaceSelect from "./PlaceSelect";
 import FinishButton from "./FinishButton";
 import planUpdateCamp from "@/libs/camp/planUpdateCamp";
-import { getId, peeLookupNong } from "./setup";
+import { getId, modifyElementInUseStateArray, peeLookupNong } from "./setup";
 import CampNumberTable from "./CampNumberTable";
+import React from "react";
 interface BundleRoleAndUser {
   role: "พี่" | "น้อง" | "ปีโต";
   user: InterUser;
@@ -70,7 +71,7 @@ export default function PlanClient({
           ) : null}
         </tr>
         {data.baanDatas.map((baan, i) => (
-          <tr>
+          <tr key={i}>
             <td>{baan.name}</td>
             <td>
               <PlaceSelect
@@ -79,8 +80,7 @@ export default function PlanClient({
                 place={normals[i]}
                 placeText="ชั้นและตึก"
                 onClick={(out) => {
-                  normals[i] = out;
-                  setNormals(normals);
+                  setNormals(normals.map(modifyElementInUseStateArray(out,i)));
                 }}
               />
             </td>
@@ -93,8 +93,7 @@ export default function PlanClient({
                     place={boys[i]}
                     placeText="ชั้นและตึก"
                     onClick={(out) => {
-                      boys[i] = out;
-                      setBoys(boys);
+                      setBoys(boys.map(modifyElementInUseStateArray(out,i)));
                     }}
                   />
                 </td>
@@ -105,8 +104,7 @@ export default function PlanClient({
                     place={girls[i]}
                     placeText="ชั้นและตึก"
                     onClick={(out) => {
-                      girls[i] = out;
-                      setGirls(girls);
+                      setGirls(girls.map(modifyElementInUseStateArray(out,i)));
                     }}
                   />
                 </td>
@@ -121,7 +119,7 @@ export default function PlanClient({
           <th>ห้องฝ่าย</th>
         </tr>
         {data.partDatas.map((part, i) => (
-          <tr>
+          <tr key={i}>
             <td>{part.name}</td>
             <td>
               <PlaceSelect
@@ -130,8 +128,7 @@ export default function PlanClient({
                 place={partPlaces[i]}
                 placeText="ชั้นและตึก"
                 onClick={(out) => {
-                  partPlaces[i] = out;
-                  setPartPlaces(partPlaces);
+                  setPartPlaces(partPlaces.map(modifyElementInUseStateArray(out,i)));
                 }}
               />
             </td>
@@ -176,8 +173,8 @@ export default function PlanClient({
           partNumbers={data.partGirlSleeps}
           groupName={data.groupName}
         />
-        {data.baanSleepDatas.map((baan) => (
-          <div>
+        {data.baanSleepDatas.map((baan,i) => (
+          <div key={i}>
             รายชื่อ{data.groupName}
             {baan.name}ผู้ชายที่นอนค้างคืน
             <table>
@@ -190,8 +187,8 @@ export default function PlanClient({
               {peeLookupNong(
                 baan.peeBoys.map(peeToBundle),
                 baan.nongBoys.map(nongToBundle)
-              ).map((user) => (
-                <tr>
+              ).map((user,i) => (
+                <tr key={i}>
                   <td>{user.user.nickname}</td>
                   <td>{user.user.name}</td>
                   <td>{user.user.lastname}</td>
@@ -211,8 +208,8 @@ export default function PlanClient({
               {peeLookupNong(
                 baan.peeGirls.map(peeToBundle),
                 baan.nongGirls.map(nongToBundle)
-              ).map((user) => (
-                <tr>
+              ).map((user,i) => (
+                <tr key={i}>
                   <td>{user.user.nickname}</td>
                   <td>{user.user.name}</td>
                   <td>{user.user.lastname}</td>
@@ -222,8 +219,8 @@ export default function PlanClient({
             </table>
           </div>
         ))}
-        {data.partSleepDatas.map((part) => (
-          <div>
+        {data.partSleepDatas.map((part,i) => (
+          <div key={i}>
             รายชื่อฝ่าย{part.name}ผู้ชายที่นอนค้างคืน
             <table>
               <tr>
@@ -235,8 +232,8 @@ export default function PlanClient({
               {part.peeBoys
                 .map(peeToBundle)
                 .concat(part.petoBoys.map(petoToBundle))
-                .map((user) => (
-                  <tr>
+                .map((user,i) => (
+                  <tr key={i}>
                     <td>{user.user.nickname}</td>
                     <td>{user.user.name}</td>
                     <td>{user.user.lastname}</td>
@@ -255,8 +252,8 @@ export default function PlanClient({
               {part.peeGirls
                 .map(peeToBundle)
                 .concat(part.petoGirls.map(petoToBundle))
-                .map((user) => (
-                  <tr>
+                .map((user,i) => (
+                  <tr key={i}>
                     <td>{user.user.nickname}</td>
                     <td>{user.user.name}</td>
                     <td>{user.user.lastname}</td>

@@ -20,4 +20,5 @@ export default async function nongRegisterCamp(
       answer,
     }),
   });
+  return await res.json()
 }

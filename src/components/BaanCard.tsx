@@ -1,11 +1,8 @@
 "use client";
 
-import { ClockIcon } from "@mui/x-date-pickers";
-import link from "next/link";
 import { InterBaanFront } from "../../interface";
-import InteractiveCard from "./InteractiveCard";
 import { useRouter } from "next/navigation";
-
+import React from "react";
 export default function BaanCard(baan: InterBaanFront) {
   const router = useRouter();
   return (

@@ -2,12 +2,11 @@
 import { TextField } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import React from "react";
+import { useState } from "react";
 
-import { useRef, useState } from "react";
-
-export default function HospitalDetailPage({}: {}) {
+export default function HospitalDetailPage() {
   const { data: session } = useSession();
-  const userRef = useRef("");
   const router = useRouter();
   const [tel, setTel] = useState<string | null>(null);
 

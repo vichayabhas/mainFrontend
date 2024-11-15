@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { InterTimeOffset, showActionPlan } from "../../interface";
 import GetTimeHtml from "./GetTimeHtml";
 import { getDifferentMinute } from "./setup";
-
+import React from "react";
 export default function ActionPlanClient({
   actionPlans,
   timeOffset,
@@ -40,11 +40,11 @@ export default function ActionPlanClient({
           <th>เบอร์โทร</th>
           <th>body</th>
         </tr>
-        {actionPlans.map((actionPlan) => {
+        {actionPlans.map((actionPlan,i) => {
           //console.log(actionPlan);
 
           return (
-            <tr style={{ border: "solid", borderColor: "white" }}>
+            <tr style={{ border: "solid", borderColor: "white" }} key={i}>
               <td
                 onClick={() => {
                   router.push(`/actionPlan/${actionPlan._id}`);

@@ -11,5 +11,6 @@ export default async function updateSleep(sleep:boolean,token:string){
       },
       cache:'no-store'
     });
+    return await response.json()
   }
 }

@@ -1,15 +1,16 @@
 "use client";
 import nongRegisterCamp from "@/libs/camp/nongRegisterCamp";
 import { MenuItem, Select, TextField } from "@mui/material";
-import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import {
   Choice,
   GetAllQuestion,
   InterCampFront,
   InterUser,
 } from "../../interface";
-import { getValue } from "./setup";
+import { getValue, modifyElementInUseStateArray } from "./setup";
 import Link from "next/link";
+import React from "react";
 
 interface QuestionReady {
   element: React.ReactNode;
@@ -28,18 +29,16 @@ export default function NongPendingPage({
 }) {
   const userRef = useRef("");
   const [link, setLink] = useState<string | null>("");
-  const choiceAnswers: [
-    Choice | "-",
-    Dispatch<SetStateAction<Choice | "-">>
-  ][] = questions.choices.map((choice) =>
-    useState<Choice | "-">(choice.answer)
+  const [choiceAnswers, setChoiceAnswers] = useState<(Choice | "-")[]>(
+    questions.choices.map((choice) => choice.answer)
   );
-  const textAnswers: [string, Dispatch<SetStateAction<string>>][] =
-    questions.texts.map((text) => useState<string>(text.answer));
+  const [textAnswers, setTextAnswers] = useState(
+    questions.texts.map((text) => text.answer)
+  );
   const questionReady: QuestionReady[] = questions.choices
     .map((choice, i) => {
-      var chooseChoice: string;
-      switch (choiceAnswers[i][0]) {
+      let chooseChoice: string;
+      switch (choiceAnswers[i]) {
         case "A": {
           chooseChoice = choice.a;
           break;
@@ -78,7 +77,11 @@ export default function NongPendingPage({
             >
               <MenuItem
                 onClick={() => {
-                  choiceAnswers[i][1]("A");
+                  setChoiceAnswers(
+                    choiceAnswers.map(
+                      modifyElementInUseStateArray<Choice | "-">("A", i)
+                    )
+                  );
                 }}
                 value={choice.a}
               >
@@ -86,7 +89,11 @@ export default function NongPendingPage({
               </MenuItem>
               <MenuItem
                 onClick={() => {
-                  choiceAnswers[i][1]("B");
+                  setChoiceAnswers(
+                    choiceAnswers.map(
+                      modifyElementInUseStateArray<Choice | "-">("B", i)
+                    )
+                  );
                 }}
                 value={choice.b}
               >
@@ -94,7 +101,11 @@ export default function NongPendingPage({
               </MenuItem>
               <MenuItem
                 onClick={() => {
-                  choiceAnswers[i][1]("C");
+                  setChoiceAnswers(
+                    choiceAnswers.map(
+                      modifyElementInUseStateArray<Choice | "-">("C", i)
+                    )
+                  );
                 }}
                 value={choice.c}
               >
@@ -102,7 +113,11 @@ export default function NongPendingPage({
               </MenuItem>
               <MenuItem
                 onClick={() => {
-                  choiceAnswers[i][1]("D");
+                  setChoiceAnswers(
+                    choiceAnswers.map(
+                      modifyElementInUseStateArray<Choice | "-">("D", i)
+                    )
+                  );
                 }}
                 value={choice.d}
               >
@@ -110,7 +125,11 @@ export default function NongPendingPage({
               </MenuItem>
               <MenuItem
                 onClick={() => {
-                  choiceAnswers[i][1]("E");
+                  setChoiceAnswers(
+                    choiceAnswers.map(
+                      modifyElementInUseStateArray<Choice | "-">("E", i)
+                    )
+                  );
                 }}
                 value={choice.e}
               >
@@ -118,7 +137,11 @@ export default function NongPendingPage({
               </MenuItem>
               <MenuItem
                 onClick={() => {
-                  choiceAnswers[i][1]("-");
+                  setChoiceAnswers(
+                    choiceAnswers.map(
+                      modifyElementInUseStateArray<Choice | "-">("-", i)
+                    )
+                  );
                 }}
                 value={"-"}
               >
@@ -162,9 +185,9 @@ export default function NongPendingPage({
               }}
               className="w-3/5 bg-white rounded-2xl shadow-inner"
               onChange={(e) => {
-                textAnswers[i][1](e.target.value);
+                setTextAnswers(textAnswers.map(modifyElementInUseStateArray(e.target.value,i)))
               }}
-              defaultValue={textAnswers[i][0]}
+              defaultValue={textAnswers[i]}
             />
           </div>
         ),
@@ -207,12 +230,12 @@ export default function NongPendingPage({
                     nongRegisterCamp(camp._id, link, token, {
                       campId: camp._id,
                       textAnswers: textAnswers.map((text, i) => ({
-                        answer: text[0],
+                        answer: text,
                         questionId: questions.texts[i]._id,
                         answerId: questions.texts[i].answerId,
                       })),
                       choiceAnswers: choiceAnswers.map((choice, i) => ({
-                        answer: choice[0],
+                        answer: choice,
                         questionId: questions.choices[i]._id,
                         answerId: questions.choices[i].answerId,
                       })),

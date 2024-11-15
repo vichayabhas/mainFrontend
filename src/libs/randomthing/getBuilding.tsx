@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { Id, InterBuilding } from "../../../interface";
 import { getBackendUrl } from "@/components/setup";
 

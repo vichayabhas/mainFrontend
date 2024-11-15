@@ -1,12 +1,10 @@
 import getPart from "@/libs/camp/getPart";
 import getPlace from "@/libs/randomthing/getPlace";
-import mongoose from "mongoose";
 import UpdatePartClient from "./UpdatePartClient";
 import { getAllPlaceData } from "./placeSetUp";
 import { Id } from "../../interface";
-
+import React from "react";
 export default async function UpdatePartServer({
-  token,
   partId,
 }: {
   partId: Id;

@@ -1,11 +1,10 @@
-import mongoose from "mongoose";
-import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import BackToHome from "@/components/BackToHome";
-import getUserProfile from "@/libs/user/getUserProfile";
-import UpdateCampServer from "@/components/UpdateCampServer";
 import { stringToId } from "@/components/setup";
-
+import UpdateCampServer from "@/components/UpdateCampServer";
+import getUserProfile from "@/libs/user/getUserProfile";
+import { getServerSession } from "next-auth";
+import React from "react";
 export default async function HospitalDetailPage({
   params,
 }: {

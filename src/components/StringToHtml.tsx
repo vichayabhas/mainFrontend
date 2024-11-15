@@ -1,10 +1,10 @@
 import Link from "next/link";
-
+import React from "react";
 export default function StringToHtml({ input }: { input: string }) {
   try {
     const url = new URL(input);
     return <Link href={url}>{input}</Link>;
-  } catch (e) {
+  } catch {
     return (
       <div
         style={{

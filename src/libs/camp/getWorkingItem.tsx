@@ -1,5 +1,4 @@
 import { getBackendUrl } from "@/components/setup";
-import mongoose from "mongoose";
 import { Id, InterWorkingItem } from "../../../interface";
 
 export default async function getWorkingItem(

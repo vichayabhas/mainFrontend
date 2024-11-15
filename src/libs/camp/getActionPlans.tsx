@@ -1,5 +1,5 @@
 import { getBackendUrl } from "@/components/setup";
-import { InterActionPlan, showActionPlan } from "../../../interface";
+import { showActionPlan } from "../../../interface";
 
 export default async function getActionPlans(
   token: string

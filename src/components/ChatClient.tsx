@@ -8,7 +8,7 @@ import createPartChat from "@/libs/randomthing/createPartChat";
 import createNongChat from "@/libs/randomthing/createNongChat";
 import createPeeBaanChat from "@/libs/randomthing/createPeeBaanChat";
 import StringToHtml from "./StringToHtml";
-
+import React from "react";
 export default function ChatClient({
   data,
   token,
@@ -50,8 +50,8 @@ export default function ChatClient({
             marginLeft: "-35%",
           }}
         >
-          {data.chats.map((chat) => (
-            <tr>
+          {data.chats.map((chat,i) => (
+            <tr key={i}>
               <tr>
                 <StringToHtml input={chat.message} />
               </tr>

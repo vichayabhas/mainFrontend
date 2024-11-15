@@ -5,7 +5,7 @@ import { InterBuilding } from "../../interface";
 import { TextField } from "@mui/material";
 import { useState } from "react";
 import createBuilding from "@/libs/randomthing/createBuilding";
-
+import React from "react";
 export default function BuildingClient({
   buildings,
   token,
@@ -17,8 +17,8 @@ export default function BuildingClient({
   const router = useRouter();
   return (
     <>
-      {buildings.map((building) => (
-        <div
+      {buildings.map((building,i) => (
+        <div key={i}
           className="flex flex-row h-auto"
           onClick={() => {
             router.push(`/place/${building._id}`);

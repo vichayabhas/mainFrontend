@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { TextField } from "@mui/material";
 import { LocalizationProvider, DateTimePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -14,7 +14,11 @@ import {
 import FinishButton from "./FinishButton";
 import PlaceSelect from "./PlaceSelect";
 import SelectTemplate from "./SelectTemplate";
-import { modifyElementInUseStateArray, notEmpty, removeElementInUseStateArray } from "./setup";
+import {
+  modifyElementInUseStateArray,
+  notEmpty,
+  removeElementInUseStateArray,
+} from "./setup";
 import { useSession } from "next-auth/react";
 import updateActionPlan from "@/libs/camp/updateActionPlan";
 import BackToHome from "./BackToHome";
@@ -44,7 +48,7 @@ export default function EditActionPland({
   const [end, setEnd] = useState<Dayjs | null>(dayjs(actionPlan.end));
   const [body, setBody] = useState<string | null>(actionPlan.body);
   const maps: MyMap[] = [];
-  var i = 0;
+  let i = 0;
   while (i < pees.length) {
     const { _id, nickname, name, lastname } = pees[i++];
     maps.push({ key: _id, value: `${nickname} ${name} ${lastname}` });
@@ -110,10 +114,11 @@ export default function EditActionPland({
         />
         {places.map((v, i) => (
           <PlaceSelect
+            key={i}
             place={v}
             allPlaceData={allPlaceData}
             onClick={(outPut) => {
-              setPlaces(places.map(modifyElementInUseStateArray<InterPlace|null>(outPut,i)))
+              setPlaces(places.map(modifyElementInUseStateArray(outPut, i)));
             }}
             buildingText={`ตึกที่${i + 1}`}
             placeText={`ชั้นและห้องที่${i + 1}`}
@@ -148,9 +153,7 @@ export default function EditActionPland({
               updateActionPlan(
                 {
                   action,
-                  placeIds: places
-                    .filter(notEmpty)
-                    .map((e) => e._id),
+                  placeIds: places.filter(notEmpty).map((e) => e._id),
                   start: start.toDate(),
                   end: end.toDate(),
                   headId,

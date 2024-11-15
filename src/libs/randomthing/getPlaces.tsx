@@ -1,6 +1,5 @@
 import { getBackendUrl } from "@/components/setup";
-import { Id, InterBuilding, InterPlace } from "../../../interface";
-import mongoose from "mongoose";
+import { Id, InterPlace } from "../../../interface";
 
 export default async function getPlaces(
   id: Id

@@ -5,7 +5,6 @@ import React from "react";
 
 export default function InteractiveCard({
   children,
-  contentName,
   link,
 }: {
   children: React.ReactNode;

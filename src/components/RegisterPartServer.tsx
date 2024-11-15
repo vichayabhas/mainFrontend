@@ -1,12 +1,11 @@
 import getBaans from "@/libs/camp/getBaans";
 import getCamp from "@/libs/camp/getCamp";
 import getShowRegisters from "@/libs/camp/getShowRegisters";
-import mongoose from "mongoose";
 import { Id, MyMap, RegisBaan, RegisPart } from "../../interface";
 import getUserFromCamp from "@/libs/camp/getUserFromCamp";
 import getPart from "@/libs/camp/getPart";
 import RegisterPartClient from "./RegisPartClient";
-
+import React from "react";
 export default async function RegisterPartServer({
   campId,
   token,
@@ -19,7 +18,7 @@ export default async function RegisterPartServer({
   const camp = await getCamp(campId);
   const baans = await getBaans(campId);
   const peeRegister = await getShowRegisters(campId, token);
-  var i = 0;
+  let i = 0;
   const regisParts: RegisPart[] = [];
   const regisBaans: RegisBaan[] = [];
   while (i < baans.length) {
@@ -40,7 +39,7 @@ export default async function RegisterPartServer({
     });
   }
   const partMap: MyMap[] = [];
-  var i = 0;
+   i = 0;
   while (i < camp.partIds.length) {
     const part = await getPart(camp.partIds[i++]);
 
@@ -51,7 +50,7 @@ export default async function RegisterPartServer({
       regisParts={regisParts}
       regisBaans={regisBaans}
       peeRegisters={peeRegister}
-      camp={camp}
+      campInput={camp}
       token={token}
       isBoard={isBoard}
       partMap={partMap}

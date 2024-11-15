@@ -12,5 +12,5 @@ export default async function addPartName(name: string, token: string) {
       },
     }
   );
-  alert(res.status);
+  return await res.json()
 }

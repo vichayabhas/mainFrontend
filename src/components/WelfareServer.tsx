@@ -1,11 +1,9 @@
 import getAllWelfare from "@/libs/camp/getAllWelfare";
-import mongoose from "mongoose";
 import WelfareClient from "./WelfareClient";
 import { Id } from "../../interface";
-
+import React from "react";
 export default async function WelfareServer({
   campId,
-  token,
 }: {
   campId: Id;
   token: string;

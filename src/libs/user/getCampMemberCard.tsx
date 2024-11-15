@@ -1,5 +1,4 @@
 import { getBackendUrl, userPath } from "@/components/setup";
-import mongoose from "mongoose";
 import { Id, InterCampMemberCard } from "../../../interface";
 
 export default async function getCampMemberCard(

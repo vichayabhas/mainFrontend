@@ -5,9 +5,8 @@ import { TextField } from "@mui/material";
 import { useState } from "react";
 import { InterPlace } from "../../interface";
 import createPlace from "@/libs/randomthing/createPlace";
-import mongoose from "mongoose";
 import { stringToId } from "./setup";
-
+import React from "react";
 export default function PlaceClient({
   places,
   buildingId,
@@ -23,8 +22,8 @@ export default function PlaceClient({
   //alert (places.length)
   return (
     <>
-      {places.map((place) => (
-        <div
+      {places.map((place,i) => (
+        <div key={i}
           className="flex flex-row h-auto"
           onClick={() => {
             router.push(`/place/${place.buildingId}/${place._id}`);

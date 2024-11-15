@@ -6,10 +6,10 @@ import { UpdateTimeOffsetRaw } from "../../interface";
 import getUserProfile from "@/libs/user/getUserProfile";
 import getTimeOffset from "@/libs/user/getTimeOffset";
 import { zeroTimeOffset } from "./setup";
-
+import React from "react";
 export default async function AirQuality() {
   const session = await getServerSession(authOptions);
-  var timeOffset: UpdateTimeOffsetRaw;
+  let timeOffset: UpdateTimeOffsetRaw;
   if (session) {
     const user = await getUserProfile(session.user.token);
     timeOffset = await getTimeOffset(user.displayOffsetId);
@@ -27,7 +27,7 @@ export default async function AirQuality() {
       </tr>
       {airQuality.measurements.hourly.map((hourly, i) =>
         i == airQuality.measurements.hourly.length - 1 ? null : (
-          <tr>
+          <tr key={i}>
             <td>
               <GetTimeHtml input={hourly.ts} offset={timeOffset} />
             </td>

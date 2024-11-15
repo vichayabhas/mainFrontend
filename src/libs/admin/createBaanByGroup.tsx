@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { getBackendUrl } from "@/components/setup";
 import { Id } from "../../../interface";
 
@@ -6,7 +5,7 @@ export default async function createBaanByGroup(
   campId: Id,
   token: string
 ) {
-  await fetch(`${getBackendUrl()}/admin/createBaanByGroup/params/${campId}`, {
+const res=  await fetch(`${getBackendUrl()}/admin/createBaanByGroup/params/${campId}`, {
     method: "POST",
     cache: "no-store",
     headers: {
@@ -14,4 +13,5 @@ export default async function createBaanByGroup(
       authorization: `Bearer ${token}`,
     },
   });
+  return await res.json()
 }

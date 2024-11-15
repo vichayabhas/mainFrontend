@@ -1,10 +1,9 @@
 "use client";
 
-import mongoose from "mongoose";
 import { Id, ShowMember } from "../../interface";
 import FinishButton from "./FinishButton";
 import { useRouter } from "next/navigation";
-import chatStyle from "./chat.module.css";
+import React from "react";import chatStyle from "./chat.module.css";
 
 export default function ChatChoiseClient({
   nongs,
@@ -30,10 +29,10 @@ export default function ChatChoiseClient({
         <th>เพศ</th>
         <th>chat</th>
       </tr>
-      {nongs.map((user: ShowMember) => {
+      {nongs.map((user: ShowMember,i) => {
         console.log(user);
         return (
-          <tr style={{ border: "solid", borderColor: "white" }}>
+          <tr style={{ border: "solid", borderColor: "white" }} key={i}>
             <td className={chatStyle.cell1}>{user.nickname}</td>
             <td className={chatStyle.cell2}>{user.name}</td>
             <td className={chatStyle.cell1}>{user.lastname}</td>

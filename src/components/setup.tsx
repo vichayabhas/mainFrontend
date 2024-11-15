@@ -13,8 +13,6 @@ import {
   UpdateTimeOffsetRaw,
 } from "../../interface";
 import dayjs from "dayjs";
-
-const deploy = false;
 export function startSize(): Map<
   "S" | "M" | "L" | "XL" | "XXL" | "3XL",
   number
@@ -36,7 +34,7 @@ export function startSize(): Map<
 export function swop(olds: Id | null, news: Id | null, array: Id[]): Id[] {
   if (!olds) {
     if (news) {
-      array.push(news);
+      return [...array, news];
     }
     return array;
   }
@@ -76,24 +74,36 @@ export function sizeJsonMod(
   input: InterSize
 ): InterSize {
   switch (size) {
-    case "S":
+    case "S": {
       input.sizeS = input.sizeS + count;
-    case "M":
+      break;
+    }
+    case "M": {
       input.sizeM = input.sizeM + count;
-    case "L":
+      break;
+    }
+    case "L": {
       input.sizeL = input.sizeL + count;
-    case "XL":
+      break;
+    }
+    case "XL": {
       input.sizeXL = input.sizeXL + count;
-    case "XXL":
+      break;
+    }
+    case "XXL": {
       input.sizeXXL = input.sizeXXL + count;
-    case "3XL":
+      break;
+    }
+    case "3XL": {
       input.size3XL = input.size3XL + count;
+      break;
+    }
   }
   return input;
 }
 
 export function mapBoolToArray(input: Map<Id, boolean>): Id[] {
-  var out: Id[] = [];
+  const out: Id[] = [];
   input.forEach((v: boolean, k: Id) => {
     if (v) {
       out.push(k);
@@ -102,14 +112,14 @@ export function mapBoolToArray(input: Map<Id, boolean>): Id[] {
   return out;
 }
 export function mapStringToMyMap(input: Map<Id, string>): MyMap[] {
-  var out: MyMap[] = [];
+  const out: MyMap[] = [];
   input.forEach((value: string, key: Id) => {
     out.push({ key, value });
   });
   return out;
 }
 export function mapObjectIdToMyMap(input: Map<Id, Id>): MapObjectId[] {
-  var out: MapObjectId[] = [];
+  const out: MapObjectId[] = [];
   input.forEach((value: Id, key: Id) => {
     out.push({ key, value });
   });
@@ -149,7 +159,6 @@ export function plusActionPlan(
     end: dayjs(end).add(minute, "minutes").toDate(),
     partId,
     placeIds,
-
     action,
     headId,
     body,
@@ -162,7 +171,7 @@ export function getBackendUrl() {
 }
 export const userPath = "api/v1/auth";
 export function hasKey(input: MyMap[] | MapObjectId[], id: Id): boolean {
-  var i = 0;
+  let i = 0;
   while (i < input.length) {
     if (input[i++].key === id) {
       return true;
@@ -171,7 +180,7 @@ export function hasKey(input: MyMap[] | MapObjectId[], id: Id): boolean {
   return false;
 }
 export function getValue(input: MyMap[], id: Id): string {
-  var i = 0;
+  let i = 0;
   while (i < input.length) {
     if (!input[i++].key.toString().localeCompare(id.toString())) {
       return input[i - 1].value;
@@ -179,19 +188,17 @@ export function getValue(input: MyMap[], id: Id): string {
   }
   return "";
 }
-
 export function notEmpty<TValue>(
   value: TValue | null | undefined
 ): value is TValue {
   if (value === null || value === undefined) return false;
-  const testDummy: TValue = value;
   return true;
 }
 export const sendNotification = () => {
   if (!("Notification" in window)) {
     throw new Error("Your browser does not support push notification");
   }
-  Notification.requestPermission().then((Permission) => {
+  Notification.requestPermission().then(() => {
     const notificationOptions = {
       body: "Welcome to Javascript Push Notification",
       //icon:"./image.png"
@@ -206,13 +213,7 @@ export function addTime(input: Date, add: InterTimeOffset): Date {
     .add(-add.minute, "minutes")
     .toDate();
 }
-const removeDups = (arr: Id[]): Id[] => {
-  let unique: Id[] = arr.reduce(function (acc: Id[], curr: Id) {
-    if (!acc.includes(curr)) acc.push(curr);
-    return acc;
-  }, []);
-  return unique;
-};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function generateExcelData(data: any, fileName: string) {
   const worksheet = utils.json_to_sheet(data);
   const workbook = utils.book_new();
@@ -243,18 +244,18 @@ export function peeLookupNong<P, N>(pees: P[], nongs: N[]): (P | N)[] {
   }
   const mp = pees.length;
   const mn = nongs.length;
-  var n = 0;
-  var p = 0;
+  let n = 0;
+  let p = 0;
   const outs: (P | N)[] = [];
-  var i = 0;
+  let i = 0;
   if (mp > mn) {
-    var count = mp / (mn + 1);
+    let count = mp / (mn + 1);
     const exc = mp % (mn + 1);
     if (exc) {
       outs.push(pees[p++]);
       count--;
     }
-    var j = 0;
+    let j = 0;
     while (j < count) {
       outs.push(pees[p++]);
       j++;
@@ -264,21 +265,21 @@ export function peeLookupNong<P, N>(pees: P[], nongs: N[]): (P | N)[] {
       if (exc > ++i) {
         outs.push(pees[p++]);
       }
-      var j = 0;
+      let j = 0;
       while (j < count) {
         outs.push(pees[p++]);
         j++;
       }
     }
   } else {
-    var count = mn / (mp - 1);
+    let count = mn / (mp - 1);
     const exc = mn % (mp - 1);
     outs.push(pees[p++]);
     if (exc) {
       outs.push(nongs[n++]);
       count--;
     }
-    var j = 0;
+    let j = 0;
     while (j < count) {
       outs.push(nongs[n++]);
       j++;
@@ -288,7 +289,7 @@ export function peeLookupNong<P, N>(pees: P[], nongs: N[]): (P | N)[] {
       if (exc > ++i) {
         outs.push(nongs[n++]);
       }
-      var j = 0;
+      let j = 0;
       while (j < count) {
         outs.push(nongs[n++]);
         j++;
@@ -348,7 +349,11 @@ export function getDifferentMinute(start: Date, end: Date) {
 export function stringToId(input: string) {
   return new mongoose.Types.ObjectId(input);
 }
-export function removeElementInUseStateArray(v: any, i: number, a: any[]) {
+export function removeElementInUseStateArray(
+  e: unknown,
+  i: number,
+  a: unknown[]
+) {
   return i < a.length - 1;
 }
 export function modifyElementInUseStateArray<T>(v: T, i: number) {
@@ -359,4 +364,17 @@ export function modifyElementInUseStateArray<T>(v: T, i: number) {
       return v2;
     }
   };
+}
+export function copyArray<T>(input: T[]): T[] {
+  return input.map((e) => e);
+}
+export function selectCheck(
+  id: Id | null,
+  checked: boolean
+): [Id | null, Id | null] {
+  if (checked) {
+    return [id, null];
+  } else {
+    return [null, id];
+  }
 }

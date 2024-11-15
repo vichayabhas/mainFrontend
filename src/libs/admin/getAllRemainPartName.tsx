@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { Id, MyMap } from "../../../interface";
 import { getBackendUrl } from "@/components/setup";
 

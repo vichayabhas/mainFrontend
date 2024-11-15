@@ -5,6 +5,7 @@ import getPart from "@/libs/camp/getPart";
 import { Id, InterPartFront } from "../../interface";
 import UpdateCampClient from "./UpdateCampClient";
 import getAllQuestion from "@/libs/camp/getAllQuestion";
+import React from "react";
 
 export default async function UpdateCampServer({
   campId,
@@ -17,7 +18,7 @@ export default async function UpdateCampServer({
   const camp = await getCamp(campId);
   const remainPartName = await getAllRemainPartName(campId, token);
   const questions=await getAllQuestion(token,campId)
-  var i = 0;
+  let i = 0;
   const parts: InterPartFront[] = [];
   while (i < camp.partIds.length) {
     const part = await getPart(camp.partIds[i++]);

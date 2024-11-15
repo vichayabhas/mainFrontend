@@ -8,7 +8,7 @@ import FinishButton from "@/components/FinishButton";
 import { getBackendUrl } from "@/components/setup";
 import { useSession } from "next-auth/react";
 import BackToHome from "@/components/BackToHome";
-
+import React from "react";
 export default function page() {
   const { data: session } = useSession();
   if (!session) {
@@ -46,8 +46,8 @@ export default function page() {
     <div>
       <label>กรุปของนิสิต</label>
       <Select value={group}>
-        {allGroup.map((g) => (
-          <MenuItem
+        {allGroup.map((g,i) => (
+          <MenuItem key={i}
             onClick={() => {
               setGroup(g);
               alert(g);
@@ -67,7 +67,7 @@ export default function page() {
       <FinishButton
         text="bypass"
         onClick={async () => {
-          const response = await fetch(
+          await fetch(
             `${getBackendUrl()}/subfunction/adminBypass`,
             {
               method: "POST",

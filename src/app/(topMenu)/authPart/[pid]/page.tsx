@@ -12,9 +12,8 @@ import getPart from "@/libs/camp/getPart";
 import getPeeCamp from "@/libs/camp/getPeeCamp";
 import getCampMemberCardByCampId from "@/libs/user/getCampMemberCardByCampId";
 import getUserProfile from "@/libs/user/getUserProfile";
-import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
-
+import React from "react";
 export default async function Baan({ params }: { params: { pid: string } }) {
   const session = await getServerSession(authOptions);
   if (!session) {
@@ -54,13 +53,14 @@ export default async function Baan({ params }: { params: { pid: string } }) {
         case "peto": {
           return (
             <AllInOneLock token={token} lock={user.mode == "nong"} pushToHome>
-              {camp.baanIds.map((baanId) => (
-                <UpdateBaanServer baanId={baanId} />
+              {camp.baanIds.map((baanId,i) => (
+                <UpdateBaanServer key={i} baanId={baanId} />
               ))}
             </AllInOneLock>
           );
         }
       }
+      break
     }
     case camp.partBoardId.toString(): {
       return (
@@ -71,6 +71,7 @@ export default async function Baan({ params }: { params: { pid: string } }) {
           <PlanServer campId={camp._id} token={token} />
         </AllInOneLock>
       );
+      
     }
     case camp.partRegisterId.toString(): {
       return (

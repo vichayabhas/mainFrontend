@@ -1,8 +1,7 @@
 import { stringToId } from "@/components/setup";
 import getHeathIssue from "@/libs/user/getHeathIssue";
 import getUser from "@/libs/user/getUser";
-import mongoose from "mongoose";
-
+import React from "react";
 export default async function HelthIshuePage({
   params,
 }: {

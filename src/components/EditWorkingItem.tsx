@@ -2,16 +2,14 @@
 
 import Link from "next/link";
 import { InterPartFront, InterWorkingItem, MyMap } from "../../interface";
-import { useRouter } from "next/navigation";
 import { MenuItem, Select, TextField } from "@mui/material";
 import { useState } from "react";
 import FinishButton from "./FinishButton";
 import createWorkingItem from "@/libs/camp/createWorkingItem";
 import SelectTemplate from "./SelectTemplate";
-import { Types } from "mongoose";
 import updateWorkingItem from "@/libs/camp/updateWorkingItem";
 import deleteWorkingItem from "@/libs/camp/deleteWorkingItem";
-
+import React from "react";
 export default function EditWorkingItem({
   workingItem,
   parts,
@@ -24,7 +22,7 @@ export default function EditWorkingItem({
   auth: boolean;
 }) {
   const partMap: MyMap[] = [];
-  var i = 0;
+  let i = 0;
   while (i < parts.length) {
     const part = parts[i++];
 

@@ -8,7 +8,7 @@ import getCampMemberCardByCampId from "@/libs/user/getCampMemberCardByCampId";
 import { getServerSession } from "next-auth";
 import ChatChoiseClient from "@/components/ChatChoiseClient";
 import { stringToId } from "@/components/setup";
-
+import React from "react";
 export default async function NongChatChoise({
   params,
 }: {

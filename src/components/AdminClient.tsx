@@ -7,7 +7,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState } from "react";
 import createCamp from "@/libs/admin/createCamp";
 import addCampName from "@/libs/admin/addCampName";
-import mongoose from "mongoose";
+import React from "react";
 
 import {
   InterNameContainer,
@@ -83,9 +83,9 @@ export default function AdminClient({
             textAlign: "left",
           }}
         >
-          {campNameContainers.map((choice: InterNameContainer) => {
+          {campNameContainers.map((choice: InterNameContainer,i) => {
             return (
-              <MenuItem
+              <MenuItem key={i}
                 value={choice.name}
                 onClick={() => {
                   setChose(choice._id);
@@ -311,10 +311,10 @@ export default function AdminClient({
               value:
                 | "นอนทุกคน"
                 | "เลือกได้ว่าจะค้างคืนหรือไม่"
-                | "ไม่มีการค้างคืน"
+                | "ไม่มีการค้างคืน",i
             ) => {
               return (
-                <MenuItem
+                <MenuItem key={i}
                   onClick={() => {
                     setPeeSleepModel(value);
                   }}
@@ -345,10 +345,10 @@ export default function AdminClient({
               value:
                 | "นอนทุกคน"
                 | "เลือกได้ว่าจะค้างคืนหรือไม่"
-                | "ไม่มีการค้างคืน"
+                | "ไม่มีการค้างคืน",i
             ) => {
               return (
-                <MenuItem
+                <MenuItem key={i}
                   onClick={() => {
                     setNongSleepModel(value);
                   }}
@@ -454,8 +454,8 @@ export default function AdminClient({
           Create Camp
         </button>
       </div>
-      {campNameContainers.map((nameContainer: InterNameContainer) => (
-        <label className="w-2/5 text-2xl text-white">
+      {campNameContainers.map((nameContainer: InterNameContainer,i) => (
+        <label className="w-2/5 text-2xl text-white" key={i}>
           {nameContainer.name}
         </label>
       ))}
@@ -510,8 +510,8 @@ export default function AdminClient({
         สร้างชื่อค่าย
       </button>
 
-      {partNameContainers.map((nameContainer: InterPartNameContainer) => (
-        <div>
+      {partNameContainers.map((nameContainer: InterPartNameContainer,i) => (
+        <div key={i}>
           <label className="text-2xl text-white" style={{ textAlign: "left" }}>
             {nameContainer.name}
           </label>

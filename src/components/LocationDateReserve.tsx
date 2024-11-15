@@ -1,16 +1,15 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import staffRegisterCamp from "@/libs/camp/staffRegister";
 import SelectTemplate from "./SelectTemplate";
-import mongoose from "mongoose";
 import { Id, InterUser, MyMap, Size } from "../../interface";
 import { Checkbox } from "@mui/material";
 import SelectSize from "./SelectSize";
 import { updateBottle } from "@/libs/user/updateBottle";
 import updateSize from "@/libs/user/updateSize";
 import updateSleep from "@/libs/user/updateSleep";
-
+import React from "react";
 export default function LocationDateReserve({
   partMap,
   token,
@@ -25,7 +24,6 @@ export default function LocationDateReserve({
   const [likeToSleepAtCamp, setLikeToSleepAtCamp] = useState<boolean>(
     user.likeToSleepAtCamp
   );
-  const userRef = useRef("");
   return (
     <>
       <div className="flex flex-row items-center my-5">

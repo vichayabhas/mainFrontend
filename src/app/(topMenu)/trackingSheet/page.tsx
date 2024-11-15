@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import bcrypt from "bcrypt";
 import WorkingItemClient from "@/components/WorkingItemClient";
 import PasswordLock from "@/components/PasswordLock";
-
+import React from "react";
 export default async function page() {
   const session = await getServerSession(authOptions);
   if (!session) {
@@ -16,7 +16,7 @@ export default async function page() {
   if (user.role === "nong") {
     return <BackToHome />;
   }
-  var i = 0;
+  let i = 0;
   const workingItems = await getWorkingItems(session.user.token);
   while (i < workingItems.length) {
     if (!(await bcrypt.compare(user.linkHash, workingItems[i++].password))) {

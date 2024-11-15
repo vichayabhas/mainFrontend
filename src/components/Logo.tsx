@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import styles from "./topmenu.module.css";
 import logoImage from "../LG_logo.png";
 
 export default function Logo() {

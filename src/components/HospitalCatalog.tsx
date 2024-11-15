@@ -2,9 +2,7 @@
 import { useRouter } from "next/navigation";
 import { InterCampFront } from "../../interface";
 import Card from "./Card";
-import Link from "next/link";
-import mongoose from "mongoose";
-
+import React from "react";
 export default function HospitalCatalog({
   hospitalsJson,
   url,
@@ -30,7 +28,7 @@ export default function HospitalCatalog({
           alignContent: "space-around",
         }}
       >
-        {hospitalsJsonReady.map((camp: InterCampFront) => {
+        {hospitalsJsonReady.map((camp: InterCampFront,i) => {
           if (
             (camp.memberStructure == "nong->1year,pee->2upYear" ||
               camp.memberStructure == "allYearMix") &&
@@ -40,7 +38,7 @@ export default function HospitalCatalog({
           }
           //console.log(camp);
           return (
-            <div className={`w-[70%] h-auto my-${5}`}>
+            <div className={`w-[70%] h-auto my-${5}`} key={i}>
               {/* <Link href={`/hospital/${hospitalItem._id}`}> */}
               <Card
                 hospitalName={camp.campName}

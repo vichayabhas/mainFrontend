@@ -5,20 +5,14 @@ import styles from "./banner.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import FinishButton from "./FinishButton";
-import { sendNotification } from "./setup";
 import LarnImage from "../larn.jpg";
 import GearImage from "../Gears.png";
+import React from "react";
 //import
 export default function Banner() {
   const router = useRouter();
   const [index, setIndex] = useState(0);
-  const cover = [
-    "/img/cover.jpg",
-    "/img/cover2.jpg",
-    "/img/cover3.jpg",
-    "/img/cover4.jpg",
-  ];
+
   const { data: session } = useSession();
 
   return (

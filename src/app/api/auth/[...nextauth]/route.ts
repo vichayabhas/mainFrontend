@@ -18,6 +18,7 @@ export const authOptions:AuthOptions={
               email: { label: "Email", type: "email", placeholder: "email" },
               password: { label: "Password", type: "password" }
             },
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             async authorize(credentials, req) {
               // Add logic here to look up the user from the credentials supplied
               if(!credentials) return null
@@ -41,7 +42,9 @@ export const authOptions:AuthOptions={
       async jwt({token,user}) {
         return {...token, ...user}
       },
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       async session({session,token,user}) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         session.user = token as any
         return session
       }

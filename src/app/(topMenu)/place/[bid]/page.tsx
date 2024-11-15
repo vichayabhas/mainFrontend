@@ -4,10 +4,8 @@ import PlaceClient from "@/components/PlaceClient";
 import { stringToId } from "@/components/setup";
 import getPlaces from "@/libs/randomthing/getPlaces";
 import getUserProfile from "@/libs/user/getUserProfile";
-import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
-import { useSession } from "next-auth/react";
-
+import React from "react";
 export default async function PlacePage({
   params,
 }: {

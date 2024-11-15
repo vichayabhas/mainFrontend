@@ -5,7 +5,7 @@ import Link from "next/link";
 import { InterCampFront, InterUser } from "../../interface";
 import FinishButton from "./FinishButton";
 import { getValue } from "./setup";
-
+import React from "react";
 export default function NongSureClient({
   campDetail,
   token,

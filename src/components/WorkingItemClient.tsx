@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import Link from "next/link";
 import { InterWorkingItem } from "../../interface";
 import { useRouter } from "next/navigation";
@@ -22,8 +22,8 @@ export default function WorkingItemClient({
           <th>จาก</th>
           <th>งานถัดไป</th>
         </tr>
-        {workingItems.map((workingItem) => (
-          <tr>
+        {workingItems.map((workingItem,i) => (
+          <tr key={i}>
             <td
               onClick={() => router.push(`/trackingSheet/${workingItem._id}`)}
             >

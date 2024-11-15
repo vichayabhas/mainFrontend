@@ -20,4 +20,5 @@ export default async function createPlace(
       buildingId,
     }),
   });
+  return await res.json()
 }

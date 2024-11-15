@@ -4,13 +4,13 @@ import HospitalCatalog from "@/components/HospitalCatalog";
 import { Suspense } from "react";
 import { LinearProgress } from "@mui/material";
 import getCamps from "@/libs/camp/getCamps";
-import getCampName from "@/libs/camp/getCampName";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import getUserProfile from "@/libs/user/getUserProfile";
+import React from "react";
 export default async function Hospital() {
   const camps = await getCamps();
-  var university = false;
+  let university = false;
   const session = await getServerSession(authOptions);
   if (session) {
     const user = await getUserProfile(session.user.token);

@@ -101,9 +101,9 @@ export default function UpdateModeRaw({
             }}
           />
         </div>
-        {camps.map((camp: InterCampFront) => {
+        {camps.map((camp: InterCampFront,i) => {
           return (
-            <div className="text-2xl my-10 text-white">
+            <div className="text-2xl my-10 text-white" key={i}>
               <Checkbox
                 sx={{
                   "&.Mui-checked": {

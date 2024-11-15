@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { useState } from "react";
 import { Select, MenuItem, TextField } from "@mui/material";
 import Image from "next/image";
@@ -37,7 +37,7 @@ function showImage(imgSrc: string | null) {
         priority
       />
     );
-  } catch (error) {
+  } catch  {
     return "invalid";
   }
 }
@@ -90,8 +90,8 @@ export default function TypingImageSource({
         className="h-[2em] w-[200px] mb-5 text-white"
         defaultValue={provider}
       >
-        {providers.map((v) => (
-          <MenuItem
+        {providers.map((v,i) => (
+          <MenuItem key={i}
             onClick={() => {
               const out = change(v, typing);
               setProvider(v);

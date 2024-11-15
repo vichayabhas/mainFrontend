@@ -18,4 +18,5 @@ export default async function addBaan(
       name,
     }),
   });
+  return await res.json()
 }

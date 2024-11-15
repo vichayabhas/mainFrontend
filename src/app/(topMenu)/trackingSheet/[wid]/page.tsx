@@ -1,8 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import BackToHome from "@/components/BackToHome";
-import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
-import { InterPartFront, InterPlace } from "../../../../../interface";
+import { InterPartFront } from "../../../../../interface";
 import getWorkingItem from "@/libs/camp/getWorkingItem";
 import getUserProfile from "@/libs/user/getUserProfile";
 import bcrypt from "bcrypt";
@@ -11,6 +10,7 @@ import getCamp from "@/libs/camp/getCamp";
 import EditWorkingItem from "@/components/EditWorkingItem";
 import PasswordLock from "@/components/PasswordLock";
 import { stringToId } from "@/components/setup";
+import React from "react";
 export default async function HospitalDetailPage({
   params,
 }: {
@@ -30,7 +30,7 @@ export default async function HospitalDetailPage({
   );
   const part = await getPart(workingItem.partId);
   const camp = await getCamp(part.campId);
-  var i = 0;
+  let i = 0;
   const parts: InterPartFront[] = [];
   while (i < camp.partIds.length) {
     const buf = await getPart(camp.partIds[i++]);

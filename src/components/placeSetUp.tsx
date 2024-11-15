@@ -1,34 +1,19 @@
 import getAllBuilding from "@/libs/randomthing/getAllBuilding";
 import { AllPlaceData, Id, InterBuilding, InterPlace } from "../../interface";
 import getPlaces from "@/libs/randomthing/getPlaces";
-import mongoose from "mongoose";
-async function getAllPlace() {
-  const out = new Map<string, InterPlace[]>();
+export async function getAllPlaceData(): Promise<AllPlaceData> {
+  const allPlace = new Map<string, InterPlace[]>();
+  const allBuildings = new Map<Id, InterBuilding>();
   const buildings = await getAllBuilding();
-  var i = 0;
+  let i = 0;
   while (i < buildings.length) {
     const places = await getPlaces(buildings[i]._id);
-    out.set(buildings[i++].name, places);
+    allBuildings.set(buildings[i]._id, buildings[i]);
+    allPlace.set(buildings[i++].name, places);
   }
-  //console.log(out);
-  return out;
-}
-export const placeReady = await getAllPlace();
-async function getAllBuildings() {
-  const out = new Map<Id, InterBuilding>();
-  const buildings = await getAllBuilding();
-  var i = 0;
-  while (i < buildings.length) {
-    out.set(buildings[i]._id, buildings[i]);
-    i++;
-  }
-  //console.log(out);
-  return out;
-}
-export const AllBuildingsReady = await getAllBuildings();
-export async function getAllPlaceData(): Promise<AllPlaceData> {
+  allPlace.set("-", []);
   return {
-    allBuildings: await getAllBuildings(),
-    allPlace: await getAllPlace(),
+    allBuildings,
+    allPlace,
   };
 }

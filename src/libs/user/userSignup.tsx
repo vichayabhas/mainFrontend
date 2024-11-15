@@ -17,7 +17,7 @@ export default async function userSignup(signUp: Register) {
       throw new Error("Failed to log-in");
     }
     return await response.json();
-  } catch (err) {
+  } catch  {
     console.log("error");
   }
 }

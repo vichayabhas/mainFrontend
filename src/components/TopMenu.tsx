@@ -1,16 +1,14 @@
 import styles from "./topmenu.module.css";
-import Image from "next/image";
 import TopMenuItem from "./TopMenuItem";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { Link } from "@mui/material";
 import getUserProfile from "@/libs/user/getUserProfile";
 import DateConv from "./Dateconv";
 import getTimeOffset from "@/libs/user/getTimeOffset";
 import dayjs from "dayjs";
 import getSystemInfo from "@/libs/randomthing/getSystemInfo";
 import Logo from "./Logo";
-
+import React from "react";
 export default async function TopMenu() {
   const monthArray = [
     "January",

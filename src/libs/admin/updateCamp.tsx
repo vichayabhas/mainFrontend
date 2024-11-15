@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { Id, UpdateCamp } from "../../../interface";
 import { getBackendUrl } from "@/components/setup";
 

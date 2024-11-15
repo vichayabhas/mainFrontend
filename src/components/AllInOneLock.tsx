@@ -55,6 +55,7 @@ export default function AllInOneLock({
           } else {
             return children;
           }
+          break
         }
         case "peto": {
           if (mode) {
@@ -117,6 +118,7 @@ export default function AllInOneLock({
           } else {
             return children;
           }
+          break
         }
         case "peto": {
           if (mode) {

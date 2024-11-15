@@ -4,7 +4,7 @@ import FinishButton from "./FinishButton";
 import VideoPlayer from "./VideoPlayer";
 import { useState } from "react";
 import { sendNotification } from "./setup";
-
+import React from "react";
 export default function PromoteCard() {
   const [playing, setPlaying] = useState(true);
 

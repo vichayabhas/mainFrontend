@@ -5,7 +5,7 @@ import updateSize from "@/libs/user/updateSize";
 
 import { Checkbox, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { InterUser } from "../../interface";
 import { Session } from "next-auth";
 import SelectSize from "./SelectSize";
@@ -13,7 +13,7 @@ import updateSleep from "@/libs/user/updateSleep";
 import { Size } from "../../interface";
 import FinishButton from "./FinishButton";
 import bypassRole from "@/libs/user/bypassRole";
-
+import React from "react";
 // note fixed text box border bg-white ,width to 60%, title color ,button color &  mx-2, checkbox color
 
 export default function UpdateProfileRaw({
@@ -23,7 +23,6 @@ export default function UpdateProfileRaw({
   user: InterUser;
   session: Session | null;
 }) {
-  const userRef = useRef("");
   const [name, setName] = useState<string>(user.name);
   const [tel, setTel] = useState<string>(user.tel);
   const [email, setEmail] = useState<string>(user.email);
@@ -281,25 +280,22 @@ export default function UpdateProfileRaw({
             onClick={() => {
               console.log(tel);
               console.log(email);
-              if (true) {
-                try {
-                  updateProfile(
-                    email,
-                    tel,
-                    name,
-                    nickname,
-                    lastname,
-                    citizenId,
-                    session.user.token
-                  );
-                  updateSize(shirtSize, session.user.token);
-                  updateBottle(haveBottle, session.user.token);
-                  updateSleep(likeToSleepAtCamp, session.user.token);
-                } catch (error) {
-                  console.log(error);
-                }
-              } else {
-                alert("Please type in all the details!");
+
+              try {
+                updateProfile(
+                  email,
+                  tel,
+                  name,
+                  nickname,
+                  lastname,
+                  citizenId,
+                  session.user.token
+                );
+                updateSize(shirtSize, session.user.token);
+                updateBottle(haveBottle, session.user.token);
+                updateSleep(likeToSleepAtCamp, session.user.token);
+              } catch (error) {
+                console.log(error);
               }
             }}
           >

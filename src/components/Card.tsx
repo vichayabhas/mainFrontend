@@ -128,18 +128,12 @@
 // */
 "use client";
 import Image from "next/image";
-
+import React from "react";
 import InteractiveCard from "./InteractiveCard";
 
-import getHospital from "@/libs/camp/getCamp";
 
 import { ClockIcon } from "@mui/x-date-pickers";
-import Link from "next/link";
 
-import { Button } from "@mui/material";
-import getCamp from "@/libs/camp/getCamp";
-import { getServerSession } from "next-auth";
-import mongoose from "mongoose";
 import { Id, InterCampFront } from "../../interface";
 //import { Router } from "next/router";
 //import { useRouter } from "next/navigation";
@@ -147,14 +141,11 @@ import { Id, InterCampFront } from "../../interface";
 export default function Card({
   hospitalName,
   onRating,
-  value,
   link,
-  imgSrc,
-  id,
   camp,
 }: {
   hospitalName: string;
-  onRating: Function;
+  onRating: (input:string)=>void;
   value?: number | null;
   link: string;
   imgSrc: string | null;

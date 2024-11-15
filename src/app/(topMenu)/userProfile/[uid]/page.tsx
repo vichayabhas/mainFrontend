@@ -1,5 +1,4 @@
 
-import mongoose from "mongoose";
 import React from "react";
 import { Size } from "../../../../../interface";
 import getNongCamp from "@/libs/camp/getNongCamp";
@@ -28,7 +27,7 @@ export default async function page({ params }: { params: { uid: string } }) {
     size: Size;
   }
   const outs: Out[] = [];
-  var i = 0;
+  let i = 0;
   while (i < user.campMemberCardIds.length) {
     const campMemberCard = await getShertmanage(user.campMemberCardIds[i++]);
     switch (campMemberCard.role) {
@@ -92,8 +91,8 @@ export default async function page({ params }: { params: { uid: string } }) {
           <th>บ้าน</th>
           <th>Size เสื้อ</th>
         </tr>
-        {outs.map((out) => (
-          <tr>
+        {outs.map((out,i) => (
+          <tr key={i}>
             <td>{out.campName}</td>
             <td>{out.role}</td>
             <td>{out.baan}</td>

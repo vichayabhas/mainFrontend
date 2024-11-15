@@ -5,8 +5,8 @@ import { stringToId } from "@/components/setup";
 import getActionPlanByPartId from "@/libs/camp/getActionPlanByPartId";
 import getTimeOffset from "@/libs/user/getTimeOffset";
 import getUserProfile from "@/libs/user/getUserProfile";
-import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
+import React from "react";
 
 export default async function HospitalDetailPage({
   params,

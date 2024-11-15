@@ -2,12 +2,11 @@ import getBaan from "@/libs/camp/getBaan";
 import getCamp from "@/libs/camp/getCamp";
 import getUserFromCamp from "@/libs/camp/getUserFromCamp";
 import getPlace from "@/libs/randomthing/getPlace";
-import mongoose from "mongoose";
 import BaanMembers from "./BaanMembers";
 import UpdateBaanClient from "./UpdateBaanClient";
 import { getAllPlaceData } from "./placeSetUp";
 import { Id } from "../../interface";
-
+import React from "react";
 export default async function UpdateBaanServer({
   baanId,
 }: {

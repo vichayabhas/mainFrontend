@@ -28,7 +28,7 @@ import getUserProfile from "@/libs/user/getUserProfile";
 import { getServerSession } from "next-auth";
 import { Id, MyMap } from "../../../../../interface";
 import chatStyle from "@/components/chat.module.css";
-
+import React from "react";
 export default async function HospitalDetailPage({
   params,
 }: {
@@ -47,7 +47,7 @@ export default async function HospitalDetailPage({
     const userId: Id= user._id;
     const timeOffset = await getTimeOffset(user.selectOffsetId);
     const partMap: MyMap[] = [];
-    var i = 0;
+    let i = 0;
     const questions = await getAllQuestion(token, campDetail._id);
     while (i < campDetail.partIds.length) {
       const part = await getPart(campDetail.partIds[i++]);

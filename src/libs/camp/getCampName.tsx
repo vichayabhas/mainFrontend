@@ -1,6 +1,4 @@
-import { getBackendUrl } from "@/components/setup";
-import { Id, InterCampFront, InterNameContainer } from "../../../interface";
-import mongoose from "mongoose";
+import { Id, InterCampFront } from "../../../interface";
 
 export default function getCampName(
   camps: InterCampFront[]

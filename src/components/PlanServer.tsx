@@ -1,8 +1,8 @@
 import getAllPlanData from "@/libs/camp/getAllPlanData";
-import mongoose from "mongoose";
 import { getAllPlaceData } from "./placeSetUp";
 import PlanClient from "./PlanClient";
 import { Id } from "../../interface";
+import React from "react";
 
 export default async function PlanServer({
   token,

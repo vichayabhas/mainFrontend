@@ -1,7 +1,7 @@
 "use client";
 import { useWindowListener } from "@/hooks/useWindowListener";
-import { useRef, useEffect, useState } from "react";
-
+import { useRef, useEffect } from "react";
+import React from "react";
 export default function VideoPlayer({
   vdoSrc,
   isPlaying,

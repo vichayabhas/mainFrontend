@@ -5,9 +5,8 @@ import UpdatePartServer from "@/components/UpdatePartServer";
 import getCamp from "@/libs/camp/getCamp";
 import getPart from "@/libs/camp/getPart";
 import getUserProfile from "@/libs/user/getUserProfile";
-import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
-
+import React from "react";
 export default async function Baan({ params }: { params: { pid: string } }) {
   const session = await getServerSession(authOptions);
   if (!session) {

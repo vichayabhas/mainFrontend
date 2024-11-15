@@ -4,8 +4,7 @@ import BuildingClient from "@/components/BuildingClient";
 import getAllBuilding from "@/libs/randomthing/getAllBuilding";
 import getUserProfile from "@/libs/user/getUserProfile";
 import { getServerSession } from "next-auth";
-import { useSession } from "next-auth/react";
-
+import React from "react";
 export default async function Placepage(){
     const buildings=await getAllBuilding()
     //console.log(buildings)

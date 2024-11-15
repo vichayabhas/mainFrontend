@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
-import { InterTimeOffset, UpdateTimeOffsetRaw } from "../../interface";
+import { UpdateTimeOffsetRaw } from "../../interface";
 import DateConv from "./Dateconv";
-
+import React from "react";
 export default function GetTimeHtml({
   input,
   offset,

@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { useState } from "react";
 import {
   AllPlaceData,
@@ -134,26 +134,22 @@ export default function UpdateBaanClient({
           <button
             className="bg-pink-300 p-3 rounded-lg shadow-[10px_10px_10px_-10px_rgba(0,0,0,0.5)] hover:bg-rose-700 hover:text-pink-50"
             onClick={() => {
-              if (true) {
-                try {
-                  updateBaan(
-                    {
-                      name,
-                      fullName,
-                      baanId: baan._id,
-                      link,
-                      girlSleepPlaceId: gP ? gP._id : null,
-                      boySleepPlaceId: bP ? bP._id : null,
-                      normalPlaceId: nP ? nP._id : null,
-                      nongSendMessage,
-                    },
-                    session.user.token
-                  );
-                } catch (error) {
-                  console.log(error);
-                }
-              } else {
-                alert("Please type in all the details!");
+              try {
+                updateBaan(
+                  {
+                    name,
+                    fullName,
+                    baanId: baan._id,
+                    link,
+                    girlSleepPlaceId: gP ? gP._id : null,
+                    boySleepPlaceId: bP ? bP._id : null,
+                    normalPlaceId: nP ? nP._id : null,
+                    nongSendMessage,
+                  },
+                  session.user.token
+                );
+              } catch (error) {
+                console.log(error);
               }
             }}
           >

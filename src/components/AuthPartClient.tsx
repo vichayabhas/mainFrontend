@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { InterPartFront } from "../../interface";
 import FinishButton from "./FinishButton";
-
+import React from "react";
 export default function AuthPartClient({ parts }: { parts: InterPartFront[] }) {
   const router = useRouter();
   return (
@@ -15,8 +15,8 @@ export default function AuthPartClient({ parts }: { parts: InterPartFront[] }) {
         marginTop: "100px",
       }}
     >
-      {parts.map((part) => (
-        <FinishButton
+      {parts.map((part,i) => (
+        <FinishButton key={i}
           text={part.partName}
           onClick={() => {
             router.push(`/authPart/${part._id}`);

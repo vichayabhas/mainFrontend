@@ -7,9 +7,8 @@ import getCamp from "@/libs/camp/getCamp";
 import getPeeCamp from "@/libs/camp/getPeeCamp";
 import getCampMemberCardByCampId from "@/libs/user/getCampMemberCardByCampId";
 import getUserProfile from "@/libs/user/getUserProfile";
-import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
-
+import React from "react";
 export default async function Baan({ params }: { params: { bid: string } }) {
   const session = await getServerSession(authOptions);
   if (!session) {
