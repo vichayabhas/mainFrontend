@@ -17,6 +17,5 @@ export default async function AllChat({ params }: { params: { cid: string } }) {
   if (!data.success) {
     return <BackToHome />;
   }
-  const k=8
   return <ChatClient data={data} token={token} />;
 }
